@@ -40,14 +40,25 @@ export function AuthProvider({ children }) {
   }, [refreshMe]);
 
   const login = async (email, password) => {
-    try {
-      const { data } = await api.post("/auth/login", { email, password });
-      persist(data.token, data.user);
-      return { success: true, user: data.user };
-    } catch (err) {
-      return { success: false, message: getErrorMessage(err) };
-    }
-  };
+  try {
+    const { data } = await api.post("/auth/login", {
+      email,
+      password,
+    });
+
+    persist(data.token, data.user);
+
+    return {
+      success: true,
+      user: data.user,
+    };
+  } catch (err) {
+    return {
+      success: false,
+      message: getErrorMessage(err),
+    };
+  }
+};
 
   const register = async (payload) => {
     try {
