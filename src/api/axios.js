@@ -1,16 +1,14 @@
 import axios from "axios";
 
 const API_BASE_URL = (
-  import.meta.env.VITE_API_URL || 
-  "https://backend-uyrm.onrender.com"
+  import.meta.env.VITE_API_URL ||
+  "https://backend-uyrm.onrender.com/api"
 ).replace(/\/+$/, "");
-
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
 });
-
 // Attach JWT from localStorage to every request, if present
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("lj_token");
