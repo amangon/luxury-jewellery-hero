@@ -1,0 +1,27 @@
+import SectionHeading from "../common/SectionHeading.jsx";
+import FeatureCard from "./FeatureCard.jsx";
+import { FEATURES } from "../../data/content.js";
+
+/**
+ * WhyChooseUs
+ * Four-across trust-signal row explaining what backs every purchase.
+ * Rendered on a very slightly lighter panel than the page background
+ * to separate it visually from the product grids above and below.
+ */
+function WhyChooseUs() {
+  return (
+    <section id="about" className="bg-[#131313] py-20 lg:py-24 border-y border-luxury-white/5">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <SectionHeading eyebrow="Our Promise" title="Why Choose Us" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
+          {FEATURES.map((feature, index) => (
+            <FeatureCard key={feature.id} feature={feature} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default WhyChooseUs;
